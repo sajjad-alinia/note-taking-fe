@@ -10,9 +10,12 @@ import Home from "./pages/home/Home";
 import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import HomeLayout from "./layouts/HomeLayout";
+// toast
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <ToastContainer />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeLayout />}>
