@@ -1,0 +1,70 @@
+@import "tailwindcss";
+/* fonts */
+@import "../public/fonts/yekan/yekan.css";
+@import "../public/fonts/iransans/AiranianSans.css";
+
+:root {
+  direction: rtl;
+}
+
+@theme {
+  --font-iraniansans: "IranSans";
+  --font-yekan: "Yekan+";
+}
+
+@layer utilities {
+  .fade-in {
+    @apply opacity-100 visible;
+  }
+  .fade-out {
+    @apply opacity-0 invisible;
+  }
+  .transition-time {
+    @apply transition-all duration-300;
+  }
+  .flex-start-center {
+    @apply flex justify-start items-center;
+  }
+  .flex-start-end {
+    @apply flex justify-start items-end;
+  }
+  .flex-start-start {
+    @apply flex justify-start items-start;
+  }
+  .flex-center-start {
+    @apply flex justify-center items-start;
+  }
+  .centering {
+    @apply !flex !justify-center !items-center;
+  }
+  .flex-center-end {
+    @apply flex justify-center items-end;
+  }
+  .flex-end-start {
+    @apply flex justify-end items-start;
+  }
+  .flex-end-center {
+    @apply flex justify-end items-center;
+  }
+  .flex-end-end {
+    @apply flex justify-end items-end;
+  }
+  .flex-between-start {
+    @apply flex justify-between items-start;
+  }
+  .flex-between-center {
+    @apply flex justify-between items-center;
+  }
+  .flex-between-end {
+    @apply flex justify-between items-end;
+  }
+  .flex-around-start {
+    @apply flex justify-around items-start;
+  }
+  .flex-around-center {
+    @apply flex justify-around items-center;
+  }
+  .flex-around-end {
+    @apply flex justify-around items-end;
+  }
+}
