@@ -9,12 +9,15 @@ import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
+import HomeLayout from "./layouts/HomeLayout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

@@ -7,6 +7,11 @@
   direction: rtl;
 }
 
+body {
+  background-color: #f1f1f1;
+  font-family: IranSans;
+}
+
 @theme {
   --font-iraniansans: "IranSans";
   --font-yekan: "Yekan+";
