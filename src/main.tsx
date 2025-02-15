@@ -5,13 +5,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 // layout
 import AuthLayout from "./layouts/AuthLayout";
+// toast
+import { ToastContainer } from "react-toastify";
 // pages
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import HomeLayout from "./layouts/HomeLayout";
-// toast
-import { ToastContainer } from "react-toastify";
+import DashboardLayout from "./layouts/DashboardLayout";
+import ProtectedRoute from "./router/ProtectedRoute";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -24,6 +27,11 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+        </Route>
+        <Route path="/dashboard" element={<ProtectedRoute />}>
+          <Route element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
