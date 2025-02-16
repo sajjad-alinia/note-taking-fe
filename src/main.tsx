@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 // style
 import "./index.css";
 // toast
@@ -12,7 +12,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ToastContainer />
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
@@ -30,6 +30,6 @@ createRoot(document.getElementById("root")!).render(
           </Route>
         </Route> */}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
