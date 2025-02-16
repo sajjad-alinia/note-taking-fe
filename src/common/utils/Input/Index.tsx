@@ -3,7 +3,7 @@ import TInput from "./types";
 import { useId } from "react";
 
 const Input = ({ name, label, type, rules }: TInput) => {
-  const { control } = useFormContext<T>();
+  const { control } = useFormContext();
   const id = useId();
   return (
     <Controller
