@@ -13,7 +13,7 @@ type TDefaultValues = {
   content: string;
 };
 
-const NoteItem = ({ title, content, createdAt, id }: TNOte) => {
+const NoteItem = ({ title, content, createdAt, id, setting }: TNOte) => {
   const defaultValues: TDefaultValues = {
     title: title,
     content: content,
@@ -39,7 +39,10 @@ const NoteItem = ({ title, content, createdAt, id }: TNOte) => {
 
   return (
     <Form methods={methods}>
-      <div className="flex flex-col bg-amber-400 rounded-md p-4 relative">
+      <div
+        className="flex flex-col rounded-md p-4 relative shadow-md"
+        style={{ backgroundColor: setting?.theme.background }}
+      >
         <span className="flex gap-4 font-bold text-xs w-full">
           <Input name="title" onChange={onChangeHandler} />
           <span className="centering text-xs text-black/25 w-10">

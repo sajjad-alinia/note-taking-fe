@@ -3,7 +3,7 @@ import useNoteStore from "../../store/store";
 import NoteList from "./components/NoteList";
 
 const Dashboard = () => {
-  const { fetchNotes, notes } = useNoteStore();
+  const { fetchNotes, notes, filteredNotes } = useNoteStore();
 
   useEffect(() => {
     fetchNotes();
@@ -11,7 +11,12 @@ const Dashboard = () => {
 
   return (
     <div className="w-full">
-      <NoteList notes={notes} />
+      {filteredNotes.length ? (
+        <div className="p-3">{filteredNotes.length} نوت</div>
+      ) : (
+        ""
+      )}
+      <NoteList notes={filteredNotes.length ? filteredNotes : notes} />
     </div>
   );
 };
