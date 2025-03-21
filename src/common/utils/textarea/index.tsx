@@ -1,11 +1,25 @@
-import { Controller, useFormContext } from "react-hook-form";
-import TInput from "./types";
 import { useId } from "react";
+import { Controller, useFormContext } from "react-hook-form";
+import { TTextarea } from "./types";
+import { twMerge } from "tailwind-merge";
 
-const Input = ({ name, label, type, onChange, rules }: TInput) => {
+export const VARIANTS = {
+  default:
+    "w-full h-fit outline-none bg-slate-100 rounded-md p-2 mt-1.5 text-xs",
+  note: "w-full h-fit outline-none bg-transparent rounded-md p-2 mt-1.5 text-xs",
+} as const;
+
+const Textarea = ({
+  name,
+  label,
+  rules,
+  rows,
+  variant,
+  onChange,
+  ...props
+}: TTextarea) => {
   const { control } = useFormContext();
   const id = useId();
-
   return (
     <Controller
       name={name}
@@ -18,11 +32,12 @@ const Input = ({ name, label, type, onChange, rules }: TInput) => {
               {label}
             </label>
           )}
-          <input
+          <textarea
             {...field}
+            {...props}
+            rows={rows}
             id={id}
-            type={type}
-            className="w-full h-fit outline-none bg-slate-100 rounded-md p-2 mt-1.5"
+            className={twMerge(`${VARIANTS[variant ?? "default"]}`)}
             onChange={(e) => {
               field.onChange(e);
               onChange?.(e);
@@ -39,4 +54,4 @@ const Input = ({ name, label, type, onChange, rules }: TInput) => {
   );
 };
 
-export default Input;
+export default Textarea;
