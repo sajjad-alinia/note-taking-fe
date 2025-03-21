@@ -33,4 +33,16 @@ export const clearNotes = async () => {
   return await db.clear("notes");
 };
 
+export const updateNote = async (id: number, updatedData: Partial<TNOte>) => {
+  const db = await getDB();
+  const existingNote = await db.get("notes", id);
+
+  if (!existingNote) {
+    throw new Error("Note not found");
+  }
+
+  const updatedNote = { ...existingNote, ...updatedData };
+  return await db.put("notes", updatedNote);
+};
+
 export default dbPromise;
