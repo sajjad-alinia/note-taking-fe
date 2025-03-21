@@ -7,7 +7,7 @@ type TNoteList = {
 
 const NoteList = ({ notes }: TNoteList) => {
   return (
-    <div className="grid grid-cols-4 gap-2.5 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-2.5 w-full">
       {notes.map((note) => (
         <NoteItem {...note} key={note.id} />
       ))}
