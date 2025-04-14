@@ -1,22 +1,18 @@
-import { useEffect } from "react";
 import useNoteStore from "../../store/store";
-import NoteList from "./components/NoteList";
+import NoteInfo from "./components/NoteInfo";
 
 const Dashboard = () => {
-  const { fetchNotes, notes, filteredNotes } = useNoteStore();
-
-  useEffect(() => {
-    fetchNotes();
-  }, [fetchNotes]);
+  const { noteSelected } = useNoteStore();
 
   return (
     <div className="w-full">
-      {filteredNotes.length ? (
-        <div className="p-3">{filteredNotes.length} نوت</div>
+      {noteSelected ? (
+        <NoteInfo />
       ) : (
-        ""
+        <div className="p-5 bg-blue-300 rounded-md w-fit mx-auto">
+          <p>از لیست سمت راست نوت انتخاب کن یا یک نوت جدید ایجاد کن :)</p>
+        </div>
       )}
-      <NoteList notes={filteredNotes.length ? filteredNotes : notes} />
     </div>
   );
 };

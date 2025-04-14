@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import useNoteStore from "../store/store";
 import { TBackgroundColors, TNOte } from "../types/types";
 
 const DashboardSidebar = () => {
-  const { createNote } = useNoteStore();
+  const { createNote, setNoteSelected } = useNoteStore();
 
   const backgroundColors: TBackgroundColors[] = [
     "#F5F5DC",
@@ -25,32 +26,62 @@ const DashboardSidebar = () => {
       },
     };
 
-    await createNote(data);
+    await createNote(data).then((id) => {
+      data.id = id;
+      setNoteSelected(data);
+    });
   };
 
   return (
-    <div className="w-full md:w-[300px] h-full border-l border-slate-300 p-3">
-      <div className="flex flex-col gap-2">
+    <div className="w-full md:w-[300px] h-full shadow-lg border-slate-300 p-3">
+      <div className="flex flex-col gap-5">
         <span>یادداشت جدید</span>
         <div className="flex gap-4">
           {backgroundColors.map((item) => (
             <div
               key={item}
               style={{ backgroundColor: item }}
-              className="w-full h-6 rounded-lg border border-white cursor-pointer"
+              className="w-full h-6 rounded-lg border border-gray-300 cursor-pointer"
               onClick={() => createHandler(item)}
             ></div>
           ))}
         </div>
+        <NoteList />
       </div>
-      {/* <button
-        onClick={() => createHandler()}
-        className="w-full p-3 bg-orange-400 hover:bg-orange-600 text-white rounded-full transition-all "
-      >
-        یادداشت جدید
-      </button> */}
     </div>
   );
 };
 
 export default DashboardSidebar;
+
+const NoteList = () => {
+  const { notes, setNoteSelected, fetchNotes } = useNoteStore();
+
+  const ClickHandler = (data: TNOte) => {
+    setNoteSelected(data);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, [fetchNotes]);
+
+  return (
+    <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto">
+      {notes.map((item) => (
+        <div
+          className="flex flex-col gap-2 p-3 rounded-md cursor-pointer"
+          style={{ backgroundColor: item.setting?.theme.background }}
+          key={item.id}
+          onClick={() => ClickHandler(item)}
+        >
+          <span className="text-sm font-bold">
+            {item.title || "بدون عنوان"}
+          </span>
+          <span className="line-clamp-2 text-xs">
+            {item.content || "بدون محتوا"}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};

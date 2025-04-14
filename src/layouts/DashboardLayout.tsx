@@ -6,11 +6,10 @@ import useNoteStore from "../store/store";
 
 const DashboardLayout = () => {
   return (
-    <div className="w-full h-screen bg-slate-100">
-      <Navbar />
+    <div className="flex flex-col w-full h-screen bg-slate-100">
       <div className="flex flex-col md:flex-row w-full h-full">
         <DashboardSidebar />
-        <main className="w-full p-3">
+        <main className="flex-start-center md:centering w-full p-3">
           <Outlet />
         </main>
       </div>
@@ -19,14 +18,6 @@ const DashboardLayout = () => {
 };
 
 export default DashboardLayout;
-
-const Navbar = () => {
-  return (
-    <div className="centering w-full shadow-md p-3">
-      <Search />
-    </div>
-  );
-};
 
 const Search = () => {
   const { searchNotes } = useNoteStore();

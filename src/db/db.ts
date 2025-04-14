@@ -20,7 +20,10 @@ export const addNote = async (data: TNOte) => {
 
 export const getNotes = async (): Promise<TNOte[]> => {
   const db = await getDB();
-  return await db.getAll("notes");
+  const notes = await db.getAll("notes");
+  return notes.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 };
 
 export const deleteNote = async (id: number) => {
