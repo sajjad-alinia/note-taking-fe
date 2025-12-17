@@ -1,4 +1,8 @@
-export type TBackgroundColors = "#F5F5DC" | "#ADD8E6" | "#98FF98" | "#FFC0CB";
+export type TBackgroundColors =
+  | "bg-note-1"
+  | "bg-note-2"
+  | "bg-note-3"
+  | "bg-note-4";
 
 export type TNoteSetting = {
   theme: {

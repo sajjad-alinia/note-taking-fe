@@ -8,10 +8,10 @@ const DashboardSidebar = () => {
   const { createNote, setNoteSelected } = useNoteStore();
 
   const backgroundColors: TBackgroundColors[] = [
-    "#F5F5DC",
-    "#ADD8E6",
-    "#98FF98",
-    "#FFC0CB",
+    "bg-note-1",
+    "bg-note-2",
+    "bg-note-3",
+    "bg-note-4",
   ];
 
   const createHandler = async (color: TBackgroundColors) => {
@@ -45,8 +45,7 @@ const DashboardSidebar = () => {
           {backgroundColors.map((item) => (
             <div
               key={item}
-              style={{ backgroundColor: item }}
-              className="w-full h-6 rounded-lg border border-gray-300 cursor-pointer"
+              className={`w-full h-6 rounded-lg border border-gray-300 cursor-pointer ${item}`}
               onClick={() => createHandler(item)}
             ></div>
           ))}
@@ -75,8 +74,7 @@ const NoteList = () => {
     <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto">
       {notes.map((item) => (
         <div
-          className="flex flex-col gap-2 p-3 rounded-md cursor-pointer"
-          style={{ backgroundColor: item.setting?.theme.background }}
+          className={`flex flex-col gap-2 p-3 rounded-md cursor-pointer ${item.setting?.theme.background}`}
           key={item.id}
           onClick={() => ClickHandler(item)}
         >

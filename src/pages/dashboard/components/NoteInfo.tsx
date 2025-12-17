@@ -54,12 +54,11 @@ const NoteInfo = () => {
   return (
     <Form methods={methods}>
       <div
-        className="flex flex-col rounded-md p-4 relative shadow-md w-full 2xl:w-[70vw] mx-auto h-[60vh] "
-        style={{ backgroundColor: noteSelected?.setting?.theme.background }}
+        className={`flex flex-col rounded-md p-4 relative shadow-md w-full 2xl:w-[70vw] mx-auto h-[60vh] ${noteSelected?.setting?.theme.background}`}
       >
-        <div className="flex gap-2 border-b border-b-gray-200 ">
+        <div className="flex gap-2 border-b border-b-secondary ">
           <button
-            className="text-lg bg-white hover:bg-blue-400 hover:text-white rounded-md transition-all  px-2 h-fit cursor-pointer"
+            className="text-lg bg-primary hover:scale-105 text-text  rounded-md transition-all  px-2 h-fit cursor-pointer"
             onClick={closeHandler}
           >
             &#x2715;
@@ -109,10 +108,10 @@ const Footer = ({ id, createdAt }: TFooter) => {
   }, [removeNote, id]);
 
   return (
-    <span className="flex-between-center w-full text-xs text-gray-700 text-end border-t border-gray-400 pt-2">
+    <span className="flex-between-center w-full text-xs text-gray-700 text-end border-t border-secondary pt-2">
       <button
         onClick={removeHandler}
-        className="centering cursor-pointer border border-gray-400 hover:bg-red-500 hover:text-white transition-all p-1 rounded-md "
+        className="centering cursor-pointer border border-secondary hover:bg-red-500 hover:text-white transition-all p-1 rounded-md "
       >
         حذف نوت !
       </button>
