@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 /* fonts */
 @import "../public/fonts/yekan/yekan.css";
 @import "../public/fonts/iransans/AiranianSans.css";
@@ -95,4 +96,12 @@ textarea::-webkit-scrollbar-thumb {
 
 textarea::-webkit-scrollbar-thumb:hover {
   background: #357ae8;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: right;
+  height: 0;
+  pointer-events: none;
 }

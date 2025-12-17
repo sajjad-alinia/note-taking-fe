@@ -2,7 +2,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import TInput from "./types";
 import { useId } from "react";
 
-const Input = ({ name, label, type, onChange, rules }: TInput) => {
+const Input = ({ name, label, type, placeholder, onChange, rules }: TInput) => {
   const { control } = useFormContext();
   const id = useId();
 
@@ -22,7 +22,8 @@ const Input = ({ name, label, type, onChange, rules }: TInput) => {
             {...field}
             id={id}
             type={type}
-            className="w-full h-fit outline-none bg-slate-100 rounded-md p-2 mt-1.5"
+            className="w-full h-fit outline-none rounded-md p-2 mt-1.5"
+            placeholder={placeholder}
             onChange={(e) => {
               field.onChange(e);
               onChange?.(e);

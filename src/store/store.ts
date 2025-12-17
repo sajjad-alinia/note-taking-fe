@@ -38,6 +38,7 @@ const useNoteStore = create<TNoteStore>((set) => ({
     const notes = await getNotes();
     set({ notes });
   },
+
   searchNotes: async (query: string) => {
     const notes = await getNotes();
     if (!query.length) {
@@ -53,6 +54,7 @@ const useNoteStore = create<TNoteStore>((set) => ({
 
     set({ filteredNotes });
   },
+
   setNoteSelected: (data: TNOte | null) => {
     set({ noteSelected: data });
   },

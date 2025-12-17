@@ -48,4 +48,11 @@ export const updateNote = async (id: number, updatedData: Partial<TNOte>) => {
   return await db.put("notes", updatedNote);
 };
 
+export const getNoteById = async (id: number) => {
+  const db = await getDB();
+
+  const note = await db.get("notes", id);
+  return note;
+};
+
 export default dbPromise;

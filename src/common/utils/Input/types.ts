@@ -6,6 +6,7 @@ type TInput = {
   name: string;
   rules?: RegisterOptions;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  Placeholder?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default TInput;

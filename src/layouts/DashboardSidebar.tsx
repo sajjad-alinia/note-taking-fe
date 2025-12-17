@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useNoteStore from "../store/store";
 import { TBackgroundColors, TNOte } from "../types/types";
+import { getNoteById } from "../db/db";
 
 const DashboardSidebar = () => {
   const { createNote, setNoteSelected } = useNoteStore();
@@ -57,8 +58,9 @@ export default DashboardSidebar;
 const NoteList = () => {
   const { notes, setNoteSelected, fetchNotes } = useNoteStore();
 
-  const ClickHandler = (data: TNOte) => {
-    setNoteSelected(data);
+  const ClickHandler = async (data: TNOte) => {
+    const note = await getNoteById(data.id!);
+    setNoteSelected(note);
   };
 
   useEffect(() => {
@@ -74,12 +76,8 @@ const NoteList = () => {
           key={item.id}
           onClick={() => ClickHandler(item)}
         >
-          <span className="text-sm font-bold">
-            {item.title || "بدون عنوان"}
-          </span>
-          <span className="line-clamp-2 text-xs">
-            {item.content || "بدون محتوا"}
-          </span>
+          <p className="text-sm font-bold">{item.title || "بدون عنوان"}</p>
+          <p className="line-clamp-2 text-xs">{item.content || "بدون محتوا"}</p>
         </div>
       ))}
     </div>

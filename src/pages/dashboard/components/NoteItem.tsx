@@ -49,6 +49,7 @@ const NoteItem = ({ title, content, createdAt, id, setting }: TNOte) => {
             {!isTyping && "Saved"}
           </span>
         </span>
+
         <Textarea
           name="content"
           rows={10}
