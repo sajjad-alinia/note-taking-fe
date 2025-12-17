@@ -4,7 +4,7 @@ type Theme = "light" | "dark";
 
 type ThemeContextValue = {
   theme: Theme;
-  setTheme: (t: Theme) => void;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 };
 
@@ -23,15 +23,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         ? "dark"
         : "light";
     }
-    return "light";
+    return "dark";
   });
 
   useEffect(() => {
     const root = document.documentElement;
 
     // Keep both a class and data attribute so Tailwind dark mode and CSS vars stay in sync
-    if (theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
+    root.classList.toggle("dark", theme === "dark");
     root.setAttribute("data-theme", theme);
 
     try {
@@ -39,7 +38,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     } catch (e) {}
   }, [theme]);
 
-  const setTheme = (t: Theme) => setThemeState(t);
+  const setTheme = (theme: Theme) => setThemeState(theme);
 
   const toggleTheme = () =>
     setThemeState((s) => (s === "dark" ? "light" : "dark"));
