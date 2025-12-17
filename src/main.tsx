@@ -5,19 +5,21 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 // toast
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "./store/theme";
 // pages
 import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ToastContainer />
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-        {/* <Route path="/" element={<HomeLayout />}>
+    <ThemeProvider>
+      <ToastContainer />
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
+          </Route>
+          {/* <Route path="/" element={<HomeLayout />}>
           <Route path="/" element={<Home />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
@@ -29,7 +31,8 @@ createRoot(document.getElementById("root")!).render(
             <Route index element={<Dashboard />} />
           </Route>
         </Route> */}
-      </Routes>
-    </HashRouter>
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
   </StrictMode>
 );

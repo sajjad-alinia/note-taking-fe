@@ -6,10 +6,23 @@
 
 :root {
   direction: rtl;
+  /* Theme variables (light by default) */
+  --primary: #f1f1f1;
+  --secondary: #ffffff;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --primary: #132440;
+  --secondary: #16476a;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
 }
 
 body {
-  background-color: #f1f1f1;
   font-family: IranSans;
 }
 
@@ -85,12 +98,12 @@ textarea::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg);
   border-radius: 10px;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background: #4a90e2;
+  background: var(--accent);
   border-radius: 10px;
 }
 
@@ -99,7 +112,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .tiptap p.is-editor-empty:first-child::before {
-  color: #adb5bd;
+  color: var(--muted);
   content: attr(data-placeholder);
   float: right;
   height: 0;

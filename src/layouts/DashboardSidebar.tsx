@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useNoteStore from "../store/store";
+import ThemeToggle from "../common/ThemeToggle";
 import { TBackgroundColors, TNOte } from "../types/types";
 import { getNoteById } from "../db/db";
 
@@ -34,9 +35,12 @@ const DashboardSidebar = () => {
   };
 
   return (
-    <div className="w-full md:w-[300px] h-full shadow-lg border-slate-300 p-3">
+    <div className="w-full md:w-[300px] h-full shadow-lg border-slate-300 p-3 bg-secondary">
       <div className="flex flex-col gap-5">
-        <span>یادداشت جدید</span>
+        <div className="flex items-center justify-between">
+          <span>یادداشت جدید</span>
+          <ThemeToggle />
+        </div>
         <div className="flex gap-4">
           {backgroundColors.map((item) => (
             <div
