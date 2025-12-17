@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import useNoteStore from "../store/store";
-import ThemeToggle from "../common/ThemeToggle";
 import { TBackgroundColors, TNOte } from "../types/types";
 import { getNoteById } from "../db/db";
+import ThemeToggle from "../common/utils/ThemeToggle";
 
 const DashboardSidebar = () => {
   const { createNote, setNoteSelected } = useNoteStore();
