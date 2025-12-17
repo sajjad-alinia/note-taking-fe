@@ -38,7 +38,7 @@ const DashboardSidebar = () => {
     <div className="w-full md:w-[300px] h-full shadow-lg border-slate-300 p-3 bg-secondary">
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-between">
-          <span>یادداشت جدید</span>
+          <span className="text-text">یادداشت جدید</span>
           <ThemeToggle />
         </div>
         <div className="flex gap-4">

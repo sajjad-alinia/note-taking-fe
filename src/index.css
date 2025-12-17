@@ -9,17 +9,20 @@
   /* Theme variables (light by default) */
   --primary: #f1f1f1;
   --secondary: #ffffff;
+  --text: #121212;
 }
 
 /* Dark theme */
 [data-theme="dark"] {
   --primary: #132440;
   --secondary: #16476a;
+  --text: #f1f1f1;
 }
 
 @theme inline {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-text: var(--text);
 }
 
 body {
