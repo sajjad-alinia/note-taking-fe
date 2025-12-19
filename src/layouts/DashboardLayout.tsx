@@ -3,7 +3,7 @@ import DashboardSidebar from "./DashboardSidebar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex flex-col w-full h-screen ">
+    <div className="flex flex-col w-full h-screen bg-primary ">
       <div className="flex flex-col md:flex-row w-full h-full">
         <DashboardSidebar />
         <main className="flex-start-center md:centering w-full p-3 bg-primary">

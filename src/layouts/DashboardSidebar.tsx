@@ -29,14 +29,14 @@ const DashboardSidebar = () => {
   };
 
   return (
-    <div className="w-full md:w-[300px] h-full p-3  bg-secondary">
-      <div className="flex flex-col gap-5">
+    <div className="flex h-screen w-full md:w-[300px] overflow-hidden p-3 bg-secondary">
+      <div className="flex flex-1 flex-col gap-5 min-h-0">
         <div className="flex items-center justify-between">
           <ThemeToggle />
         </div>
         <div className="flex gap-4">
           <button
-            className={`w-full py-2 text-text  bg-primary rounded-md cursor-pointer `}
+            className={`w-full shadow-md py-2 text-text  bg-primary rounded-md cursor-pointer `}
             onClick={createHandler}
           >
             یادداشت جدید +
@@ -63,13 +63,13 @@ const NoteList = () => {
   }, [fetchNotes]);
 
   return (
-    <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto">
-      <span className="text-text text-sm text-center border-b border-primary pb-2.5">
+    <div className="flex flex-1 flex-col gap-3 min-h-0 overflow-y-auto custom-scroll scrollbar-right overflow-x-hidden">
+      <span className="text-text text-sm text-center border-b border-primary pb-2.5 ">
         لیست یادداشت ها
       </span>
       {notes.map((item) => (
         <div
-          className={`flex flex-col gap-2 p-3 rounded-md cursor-pointer ${item.setting?.theme.background}`}
+          className={`flex flex-col gap-2 p-3 rounded-md cursor-pointer z-10 transition-all ${item.setting?.theme.background}`}
           key={item.id}
           onClick={() => ClickHandler(item)}
         >
