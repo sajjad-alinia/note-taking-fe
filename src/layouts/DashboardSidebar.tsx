@@ -31,9 +31,6 @@ const DashboardSidebar = () => {
   return (
     <div className="flex h-screen w-full md:w-[300px] overflow-hidden p-3 bg-secondary">
       <div className="flex flex-1 flex-col gap-5 min-h-0">
-        <div className="flex items-center justify-between">
-          <ThemeToggle />
-        </div>
         <div className="flex gap-4">
           <button
             className={`w-full shadow-md py-2 text-text  bg-primary rounded-md cursor-pointer `}
@@ -41,6 +38,7 @@ const DashboardSidebar = () => {
           >
             یادداشت جدید +
           </button>
+          <ThemeToggle />
         </div>
         <NoteList />
       </div>

@@ -9,7 +9,7 @@ const ThemeToggle: React.FC = () => {
     <button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="px-2 py-1 rounded-md border border-text cursor-pointer transition-time flex items-center gap-2"
+      className="px-2 py-1 rounded-md cursor-pointer shadow-md transition-time flex items-center gap-2"
     >
       {theme === "dark" ? (
         <>
