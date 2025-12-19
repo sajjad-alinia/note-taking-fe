@@ -1,20 +1,14 @@
 import { useEffect } from "react";
 import useNoteStore from "../store/store";
-import { TBackgroundColors, TNOte } from "../types/types";
+import { TNOte } from "../types/types";
 import { getNoteById } from "../db/db";
 import ThemeToggle from "../common/utils/ThemeToggle";
+import { stripHtmlTags } from "../common/utils/HtmlStripper";
 
 const DashboardSidebar = () => {
   const { createNote, setNoteSelected } = useNoteStore();
 
-  const backgroundColors: TBackgroundColors[] = [
-    "bg-note-1",
-    "bg-note-2",
-    "bg-note-3",
-    "bg-note-4",
-  ];
-
-  const createHandler = async (color: TBackgroundColors) => {
+  const createHandler = async () => {
     const date = new Date().toISOString();
     const data: TNOte = {
       title: "",
@@ -23,7 +17,7 @@ const DashboardSidebar = () => {
       updatedAt: date,
       setting: {
         theme: {
-          background: color,
+          background: "bg-note-2",
         },
       },
     };
@@ -35,20 +29,18 @@ const DashboardSidebar = () => {
   };
 
   return (
-    <div className="w-full md:w-[300px] h-full shadow-lg border-slate-300 p-3 bg-secondary">
+    <div className="w-full md:w-[300px] h-full p-3  bg-secondary">
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-between">
-          <span className="text-text">یادداشت جدید</span>
           <ThemeToggle />
         </div>
         <div className="flex gap-4">
-          {backgroundColors.map((item) => (
-            <div
-              key={item}
-              className={`w-full h-6 rounded-lg border border-gray-300 cursor-pointer ${item}`}
-              onClick={() => createHandler(item)}
-            ></div>
-          ))}
+          <button
+            className={`w-full py-2 text-text  bg-primary rounded-md cursor-pointer `}
+            onClick={createHandler}
+          >
+            یادداشت جدید +
+          </button>
         </div>
         <NoteList />
       </div>
@@ -72,6 +64,9 @@ const NoteList = () => {
 
   return (
     <div className="flex flex-col gap-3 max-h-[500px] overflow-y-auto">
+      <span className="text-text text-sm text-center border-b border-primary pb-2.5">
+        لیست یادداشت ها
+      </span>
       {notes.map((item) => (
         <div
           className={`flex flex-col gap-2 p-3 rounded-md cursor-pointer ${item.setting?.theme.background}`}
@@ -79,7 +74,9 @@ const NoteList = () => {
           onClick={() => ClickHandler(item)}
         >
           <p className="text-sm font-bold">{item.title || "بدون عنوان"}</p>
-          <p className="line-clamp-2 text-xs">{item.content || "بدون محتوا"}</p>
+          <p className="line-clamp-2 text-xs truncate">
+            {stripHtmlTags(item.content) || "بدون محتوا"}
+          </p>
         </div>
       ))}
     </div>

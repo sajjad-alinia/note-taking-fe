@@ -1,5 +1,5 @@
 import useNoteStore from "../../store/store";
-import NoteInfo from "./components/NoteInfo";
+import NoteInfo from "./components/note-info/NoteInfo";
 
 const Dashboard = () => {
   const { noteSelected } = useNoteStore();

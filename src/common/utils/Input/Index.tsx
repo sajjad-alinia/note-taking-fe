@@ -12,7 +12,7 @@ const Input = ({ name, label, type, placeholder, onChange, rules }: TInput) => {
       control={control}
       rules={rules}
       render={({ field, fieldState }) => (
-        <div className="flex-1 flex-col w-full h-fit mb-3">
+        <div className="flex-1 flex-col w-full h-fit ">
           {label && (
             <label htmlFor={id} className="text-sm">
               {label}
