@@ -68,8 +68,12 @@ const NoteInfo = () => {
             placeholder="عنوان نداره !"
             onChange={onChangeHandler}
           />
-          <span className="centering text-xs text-black/25 w-10">
-            {!isTyping && "Saved"}
+          <span
+            className={`centering text-xs text-text w-10 h-fit shadow-sm rounded-md px-1.5 py-1 ${
+              isTyping ? "bg-yellow-600 animate-bounce" : "bg-green-500"
+            }`}
+          >
+            Saved
           </span>
         </div>
 
